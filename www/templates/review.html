@@ -1,0 +1,55 @@
+<ion-view view-title="Account">
+    <div id="before_review" ng-hide="myValue">
+        <ion-content id="modal_user">
+            <div class="row" style="margin-top: 20px;">
+                <label class="modal_username" style="">Hello Daichi</label>
+            </div>
+            <div class="row" style="margin-left: 18px;">
+                <table>
+                    <tr>
+                        <td style="width:100%;padding: 0px 0px;">
+                            <label class="modal_username" style="color: black;font-size:28px;margin-left:0px;">  $10<label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row" style="margin-left: 18px;">
+                <label class="" style="font-size: 18px;color: black;">review Yusuke Shimizu</label>
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col">
+                    <img class="user_image" src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12036706_845709408861271_5413284334830375868_n.jpg?oh=9ec58d46baac534e649f8a49f264b476&oe=587D8AC8"></img>
+                 </div>
+                 <div class="col">
+                     <span class = "rate rate0_0" ng-class="review_star" style="margin-top: 3px;" ng-click="star($event)"></span>
+                 </div>
+            </div>
+            <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea1" class="materialize-textarea" style="font-size: 26px;"></textarea>
+                      <label for="textarea1">Comment</label>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer bar-balanced">
+            <div class="title" ng-click="review()">Review</div>
+        </div>
+    </div>
+    <div id="after_review" ng-show="myValue">
+        <ion-content id="">
+            <div class="row" style="margin-top: 180px;">
+                <label class="modal_label" style="">Thank you for using.</label>
+            </div>
+            <div class="row" style="margin-top: 0px;">
+                <label class="modal_label">Transaction is completed.</label>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer bar-balanced">
+            <div class="title" ng-click="finish()">Finish</div>
+        </div>
+    </div>
+</ion-view>

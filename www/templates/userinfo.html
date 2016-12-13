@@ -1,0 +1,84 @@
+<ion-view view-title="Account">
+    <div id="before_review" ng-hide="myValue">
+        <ion-content id="modal_user">
+            <div class="row" style="margin-top: 25px;">
+                <i class="absolute_right icon material-icons" style="color:black;" ng-click="goback()">highlight_off</i>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <label class="margin_left label_big" style="">Daichi Miyajima</label>
+            </div>
+            <div class="row" style="margin-top: 15px;">
+                <div class="col">
+                    <img class="absolute_left round_image image_middle" src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&oe=58672B17"></img>
+                </div>
+                <div class="col">
+                    <span class = "rate rate4_0" style="margin-top: 3px;"></span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 15px;border-bottom: solid 1px rgba(216, 206, 217, 0.30) !important;border-top: solid 1px rgba(216, 206, 217, 0.30) !important;text-align: center;">
+                <div class="col" ng-click="photo_click();">
+                    <a id="userinfo_tab" ng-class="userinfo_tab_photo"><i class="material-icons" style="vertical-align: middle;margin-top: 8px;">photo_library</i></a>
+                </div>
+                <div class="col" ng-click="list_click();">
+                    <a id="userinfo_tab" ng-class="userinfo_tab_list"><i class="material-icons" style="vertical-align: middle;margin-top: 8px;">list</i></a>
+                </div>
+                <div class="col" ng-click="account_click();">
+                    <a id="userinfo_tab" ng-class="userinfo_tab_account"><i class="material-icons" style="vertical-align: middle;margin-top: 8px;">account_circle</i></a>
+                </div>
+            </div>
+            <div id="userinfo_tab_photos" ng-show="userinfo_tab_photos_show">
+                <div class="row userinforow">
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12036706_845709408861271_5413284334830375868_n.jpg?oh=9ec58d46baac534e649f8a49f264b476&amp;oe=587D8AC8"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                </div>
+                <div class="row userinforow">
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                </div>
+                <div class="row userinforow">
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                </div>
+                <div class="row userinforow">
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                </div>
+                <div class="row userinforow">
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12036706_845709408861271_5413284334830375868_n.jpg?oh=9ec58d46baac534e649f8a49f264b476&amp;oe=587D8AC8"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12036706_845709408861271_5413284334830375868_n.jpg?oh=9ec58d46baac534e649f8a49f264b476&amp;oe=587D8AC8"></div>
+                    <div class="col userinfocol"><img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/947020_1042295795843419_1720321809087675440_n.jpg?oh=fea7737d2119589a28c50e31bf49a52a&amp;oe=58672B17"></div>
+                </div>
+            </div>
+            <div id="userinfo_tab_lists" ng-show="userinfo_tab_lists_show">
+                <div class="list candylist candylist_icon_left" style="padding-top:1px;">
+                    <a class="item item-avatar">
+                        <img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12036706_845709408861271_5413284334830375868_n.jpg?oh=9ec58d46baac534e649f8a49f264b476&oe=587D8AC8">
+                        <h2>Yusuke Shimizu</h2>
+                        <span class = "rate_account rate_account4_6" style="margin-top: 3px;"></span>
+                        <p>I'm goot at around ASAKUSA.</p>
+                    </a>
+                    <a class="item item-avatar">
+                        <img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12036706_845709408861271_5413284334830375868_n.jpg?oh=9ec58d46baac534e649f8a49f264b476&oe=587D8AC8">
+                        <h2>Yusuke Shimizu</h2>
+                        <span class = "rate_account rate_account4_6" style="margin-top: 3px;"></span>
+                        <p>I'm goot at around ASAKUSA.</p>
+                    </a>
+                </div>
+            </div>
+            <div id="userinfo_tab_lists" ng-show="userinfo_tab_accounts_show">
+            </div>
+        </ion-content>
+        <div class="bar bar-footer bar-balanced">
+            <div class="title" ng-click="gochatdetail()">Request Guide</div>
+        </div>
+    </div>
+</ion-view>
