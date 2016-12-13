@@ -69,7 +69,6 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
         templateUrl: 'templates/landing.html',
         controller: 'landingCtrl'
     })
-      
     .state('tab.account', {
         url: '/account',
         views: {
@@ -78,20 +77,6 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
                 controller: 'accountCtrl'
             }
         }
-    })
-    .state('tab.chat', {
-        url: '/chat',
-        views: {
-            'tab-chat': {
-                templateUrl: 'templates/tab-chat.html',
-                controller: 'chatCtrl'
-            }
-        }
-    })
-    .state('chatdetail', {
-        url: '/chatdetail',
-        templateUrl: 'templates/chatdetail.html',
-        controller: 'chatdetailCtrl'
     })
     .state('userinfo', {
         url: '/userinfo',
