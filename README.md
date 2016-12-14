@@ -40,6 +40,7 @@ cordova plugin add cordova-plugin-console
 
 cordova plugin add cordova-plugin-touch-id
 
+cordova plugin add cordova-plugin-mauron85-background-geolocation
 
 
 ##TO START
@@ -58,6 +59,8 @@ cordova plugin add cordova-plugin-whitelist
 cordova plugin add cordova-plugin-console
 
 cordova plugin add cordova-plugin-touch-id
+
+cordova plugin add cordova-plugin-mauron85-background-geolocation
 
 ionic resources --icon
 
