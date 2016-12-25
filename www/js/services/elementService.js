@@ -68,40 +68,6 @@ candyService.factory('elementService', function(mapService, configService, authS
                         }, element.markersArrow);
                     });
                 });
-                //For creating infowindow using marker object
-                /*mapService.map.addMarker({
-                    'position': new plugin.google.maps.LatLng(location[0], location[1]),
-                    'zIndex': 110,
-                    'icon': {
-                         'url': canvasinfowindow,
-                         'size': {
-                                width: 6 * config.globalConfig.mapOptions.camera.zoom,
-                                height: 6 * config.globalConfig.mapOptions.camera.zoom
-                         }
-                    }
-                }, function(marker) {
-                    element.markersInfowindow[key] = marker;
-                    mapService.map.on(plugin.google.maps.event.CAMERA_CHANGE, function(camera){
-                        if(camera.zoom < 11){
-                            size_width = 0.1;
-                            size_height = 0.1;
-                        }else{
-                            size_width = 6 * camera.zoom;
-                            size_height = 6 * camera.zoom;
-                        }
-                        element.markersInfowindow[key].setIcon({
-                            'url': canvasinfowindow,
-                            'size': {
-                                width: size_width,
-                                height: size_height
-                            }
-                        });
-                    });
-                    element.markersInfowindow[key].addEventListener(plugin.google.maps.event.MARKER_CLICK, function() {
-                        mapService.map.setClickable( false );
-                        $state.go('userinfo');
-                    });
-                });*/
             });
         }
     }
@@ -112,8 +78,6 @@ candyService.factory('elementService', function(mapService, configService, authS
             element.markers[key].setPosition(new plugin.google.maps.LatLng(location[0], location[1]));
             //arrow
             element.markersArrow[key].setPosition(new plugin.google.maps.LatLng(location[0], location[1]));
-            //infowindow
-            element.markersInfowindow[key].setPosition(new plugin.google.maps.LatLng(location[0], location[1]));
         }
     }
 
@@ -126,9 +90,6 @@ candyService.factory('elementService', function(mapService, configService, authS
             element.markersArrow[key].remove();
             delete element.markersArrow[key];
             delete element.userheading[key];
-            //infowindow
-            element.markersInfowindow[key].remove();
-            delete element.markersInfowindow[key];
         }
     }
 
@@ -141,7 +102,6 @@ candyService.factory('elementService', function(mapService, configService, authS
     var element = {
         markers: new Array(),
         markersArrow: new Array(),
-        markersInfowindow: new Array(),
         userheading: new Array(),
         bearing: 0,
         modal:"",

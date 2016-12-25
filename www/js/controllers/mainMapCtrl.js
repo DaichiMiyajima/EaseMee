@@ -22,11 +22,9 @@ candyCtrl.controller('mainMapCtrl', function($rootScope, $scope, $ionicPlatform,
                     });
                 });
                 rootService.geoQuery.on("key_moved", function(key, location, distance) {
-                    console.log(key + " moved within query to " + location + " (" + distance + " km from center)");
                     elementService.changemarker(key, location, distance);
                 });
                 rootService.geoQuery.on("key_exited", function(key, location, distance) {
-                    console.log(key + " exited query to " + location + " (" + distance + " km from center)");
                     elementService.deletemarker(key, location, distance);
                 });
                 //change the orientation
@@ -38,4 +36,57 @@ candyCtrl.controller('mainMapCtrl', function($rootScope, $scope, $ionicPlatform,
             gpsService.getWatchPosition();
         });
     });
+    
+    /*
+    $ionicPlatform.ready(function() {
+        var callbackFn = function(location) {
+            console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
+            backgroundGeolocation.finish();
+        };
+    
+        var failureFn = function(error) {
+            console.log('BackgroundGeolocation error');
+        };
+    
+        // BackgroundGeolocation is highly configurable. See platform specific configuration options
+        backgroundGeolocation.configure(callbackFn, failureFn, {
+            desiredAccuracy : 50,
+            stationaryRadius : 50,  
+            distanceFilter : 50,
+            debug: true,
+            notificationTitle: 'Background tracking',
+            notificationText: 'enabled',
+            notificationIconColor: '#FEDD1E',
+            notificationIconLarge: 'mappointer_large',
+            notificationIconSmall: 'mappointer_small',
+            url: 'http://160.16.197.85:3033/api/location',
+            syncUrl: 'http://160.16.197.85:3033/api/location',
+            httpHeaders: { 'X-FOO': 'bar' },
+            interval: 10000,
+            fastestInterval: 5000,
+            activitiesInterval: 100000,
+            stopOnTerminate: false,
+            startOnBoot: true,
+            startForeground: true,
+            stopOnStillActivity: false,
+            activityType: 'Other',
+            pauseLocationUpdates: false,
+            saveBatteryOnBackground: false,
+            maxLocations: 100
+        });
+    
+        // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
+        backgroundGeolocation.start();
+        
+        backgroundGeolocation.getLocations(
+            function (locations) {
+                console.log(locations);
+                jQuery.post(url, JSON.stringify(location));
+            }
+        );
+    
+        // If you wish to turn OFF background-tracking, call the #stop method.
+        // backgroundGeolocation.stop();
+    });
+    */
 });

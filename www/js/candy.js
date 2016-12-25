@@ -6,8 +6,11 @@
 //candy.directives is found in directives
 var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', 'candy.services', 'candy.directives', 'ngCordova'])
 
-.run(function($ionicPlatform, authService,$rootScope, $location) {
+.run(function($ionicPlatform, authService,$rootScope, $location ,backgroundgpsService) {
     $ionicPlatform.ready(function() {
+        //To Start background service
+        backgroundgpsService.init();
+
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
