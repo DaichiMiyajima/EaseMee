@@ -9,7 +9,12 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
 .run(function($ionicPlatform, authService,$rootScope, $location ,backgroundgpsService) {
     $ionicPlatform.ready(function() {
         //To Start background service
-        backgroundgpsService.init();
+        window.gpsFetchPlugin.gpsfetch("", function() {
+            console.log("gpsFetchPlugin SUCESS!!!!!!!!!!!!!!!!!");
+        }
+        ,function() {
+            console.log("gpsFetchPlugin ERROR!!!!!!!!!!!!!!!!!");
+        });
 
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
