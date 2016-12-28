@@ -1,21 +1,8 @@
-// angular.module is a global place for creating, registering and retrieving Angular module
-// candy is the name of this angular module(also set in a body attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// candy.services is found in services
-// candy.controllers is found in controllers
-//candy.directives is found in directives
 var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', 'candy.services', 'candy.directives', 'ngCordova'])
 
 .run(function($ionicPlatform, authService,$rootScope, $location ,backgroundgpsService) {
+    console.log("RUN THROUGH");
     $ionicPlatform.ready(function() {
-        //To Start background service
-        window.gpsFetchPlugin.gpsfetch("", function() {
-            console.log("gpsFetchPlugin SUCESS!!!!!!!!!!!!!!!!!");
-        }
-        ,function() {
-            console.log("gpsFetchPlugin ERROR!!!!!!!!!!!!!!!!!");
-        });
-
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

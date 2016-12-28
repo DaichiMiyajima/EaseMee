@@ -65,4 +65,9 @@ cordova plugin add cordova-plugin-mauron85-background-geolocation
 ionic resources --icon
 
 ionic platform remove ios
+
 ionic platform add ios
+
+ionic plugin add plugins-dev/gpsFetch
+
+ionic plugin add plugins-dev/gpsFetch
