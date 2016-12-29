@@ -68,6 +68,8 @@ ionic platform remove ios
 
 ionic platform add ios
 
-ionic plugin add plugins-dev/gpsFetch
+ionic plugin add plugins-dev/gpsFetchPlugin
 
-ionic plugin add plugins-dev/gpsFetch
+ionic plugin add plugins-dev/EchoPlugin
+
+
