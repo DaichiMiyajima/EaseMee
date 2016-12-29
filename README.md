@@ -44,7 +44,8 @@ cordova plugin add cordova-plugin-mauron85-background-geolocation
 
 
 ##TO START
-ionic platform add ios
+
+#### Install Plugin and Platform
 
 cordova plugin add cordova-plugin-inappbrowser
 
@@ -73,3 +74,6 @@ ionic plugin add plugins-dev/gpsFetchPlugin
 ionic plugin add plugins-dev/EchoPlugin
 
 
+#### Change settings of XCODE
+
+1. Open Xcode Project
