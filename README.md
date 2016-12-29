@@ -59,3 +59,11 @@ Easily you can meet up with friends.
 #### ②Change settings of XCODE
 
     1. Open Xcode Project
+    2. General > Singning > team
+         Set Team
+    3. General > Deployment Info > Deployment Target
+         Set 10.2
+    4. Capabilities > Background Modes > Modes > Location Updates
+         Check
+    5. Info > Custom iOS Target Properties
+       add "Privacy - Location Always Usage Description" key
