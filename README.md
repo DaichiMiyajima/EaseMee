@@ -29,10 +29,12 @@ Easily you can meet up with friends.
 
 #### ①Install Plugin and Platform
 
+    ionic platform add ios
+    
     cordova plugin add cordova-plugin-inappbrowser
-
+    
     cordova plugin add cordova-plugin-device-orientation
-
+    
     cordova plugin add cordova-plugin-geolocation
     
     cordova plugin add https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="AIzaSyAgRBnkDt1hWVJrV3xU91EsrhEysYx1rC8"
@@ -42,8 +44,6 @@ Easily you can meet up with friends.
     cordova plugin add cordova-plugin-console
     
     cordova plugin add cordova-plugin-touch-id
-    
-    cordova plugin add cordova-plugin-mauron85-background-geolocation
     
     ionic resources --icon
     
@@ -66,4 +66,4 @@ Easily you can meet up with friends.
     4. Capabilities > Background Modes > Modes > Location Updates
          Check
     5. Info > Custom iOS Target Properties
-       add "Privacy - Location Always Usage Description" key
+         add "Privacy - Location Always Usage Description" key

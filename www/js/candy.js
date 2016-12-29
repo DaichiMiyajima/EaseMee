@@ -1,6 +1,6 @@
 var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', 'candy.services', 'candy.directives', 'ngCordova'])
 
-.run(function($ionicPlatform, authService,$rootScope, $location ,backgroundgpsService) {
+.run(function($ionicPlatform, authService,$rootScope, $location) {
     console.log("RUN THROUGH");
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
