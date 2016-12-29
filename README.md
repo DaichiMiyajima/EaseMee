@@ -24,56 +24,38 @@ Easily you can meet up with friends.
 2. Android
 
 
-##Cordova
-
-cordova plugin add cordova-plugin-inappbrowser
-
-cordova plugin add cordova-plugin-device-orientation
-
-cordova plugin add cordova-plugin-geolocation
-
-cordova plugin add https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="AIzaSyAgRBnkDt1hWVJrV3xU91EsrhEysYx1rC8"
-
-cordova plugin add cordova-plugin-whitelist
-
-cordova plugin add cordova-plugin-console
-
-cordova plugin add cordova-plugin-touch-id
-
-cordova plugin add cordova-plugin-mauron85-background-geolocation
-
 
 ##TO START
 
-#### Install Plugin and Platform
+#### ①Install Plugin and Platform
 
-cordova plugin add cordova-plugin-inappbrowser
+    cordova plugin add cordova-plugin-inappbrowser
 
-cordova plugin add cordova-plugin-device-orientation
+    cordova plugin add cordova-plugin-device-orientation
 
-cordova plugin add cordova-plugin-geolocation
+    cordova plugin add cordova-plugin-geolocation
+    
+    cordova plugin add https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="AIzaSyAgRBnkDt1hWVJrV3xU91EsrhEysYx1rC8"
+    
+    cordova plugin add cordova-plugin-whitelist
+    
+    cordova plugin add cordova-plugin-console
+    
+    cordova plugin add cordova-plugin-touch-id
+    
+    cordova plugin add cordova-plugin-mauron85-background-geolocation
+    
+    ionic resources --icon
+    
+    ionic platform remove ios
+    
+    ionic platform add ios
+    
+    ionic plugin add plugins-dev/gpsFetchPlugin
+    
+    ionic plugin add plugins-dev/EchoPlugin
 
-cordova plugin add https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="AIzaSyAgRBnkDt1hWVJrV3xU91EsrhEysYx1rC8"
 
-cordova plugin add cordova-plugin-whitelist
+#### ②Change settings of XCODE
 
-cordova plugin add cordova-plugin-console
-
-cordova plugin add cordova-plugin-touch-id
-
-cordova plugin add cordova-plugin-mauron85-background-geolocation
-
-ionic resources --icon
-
-ionic platform remove ios
-
-ionic platform add ios
-
-ionic plugin add plugins-dev/gpsFetchPlugin
-
-ionic plugin add plugins-dev/EchoPlugin
-
-
-#### Change settings of XCODE
-
-1. Open Xcode Project
+    1. Open Xcode Project
