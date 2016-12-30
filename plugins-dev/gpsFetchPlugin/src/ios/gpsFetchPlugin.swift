@@ -112,6 +112,8 @@ import Foundation
         
         //star location
         myLocationManager.startUpdatingLocation()
+        myLocationManager.startMonitoringSignificantLocationChanges()
+        
         
         //stop location update
         //myLocationManager.stopUpdatingLocation()
