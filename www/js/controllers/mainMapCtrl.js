@@ -15,7 +15,7 @@ candyCtrl.controller('mainMapCtrl', function($rootScope, $scope, $ionicPlatform,
                                 userService.usermagneticHeading[key] = userService.userHeading(key);
                                 userService.usermagneticHeading[key].$watch(function(event) {
                                     userService.userHeading(key).$loaded().then(function(magneticHeading){
-                                        elementService.rotatemarker(key, magneticHeading.heading);
+                                        //elementService.rotatemarker(key, magneticHeading.heading);
                                     });
                                 });
                         });
@@ -28,7 +28,7 @@ candyCtrl.controller('mainMapCtrl', function($rootScope, $scope, $ionicPlatform,
                     elementService.deletemarker(key, location, distance);
                 });
                 //change the orientation
-                orientationService.arrow();
+                //orientationService.arrow();
             });
             //When finished the loading getCurrent position, you call watchposition. 
             //Error will happen If you call this watchposition in parallel with getCurrentPosition

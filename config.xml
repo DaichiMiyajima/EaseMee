@@ -26,7 +26,6 @@
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.1"/>
   <plugin name="cordova-plugin-statusbar" spec="~2.2.1"/>
   <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
-  <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.2.0"/>
   <platform name="ios">
     <splash src="resources/ios/splash/Default-568h@2x~iphone.png" height="1136" width="640"/>
     <splash src="resources/ios/splash/Default-667h.png" height="1334" width="750"/>
