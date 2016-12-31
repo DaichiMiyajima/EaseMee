@@ -14,6 +14,11 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
             StatusBar.styleDefault();
         }
         openFB.init({appId: '880988045380765', tokenStore: window.localStorage, accessToken: window.localStorage.accessToken});
+        console.log("gpsFetchPlugin RUN!!!!!!!!!!???????????????");
+        window.gpsFetchPlugin.gpsFetch("", function() {
+        }
+        ,function() {
+        });
     });
 
     // When ng-route changing. Redirect if the user is loggedin or not

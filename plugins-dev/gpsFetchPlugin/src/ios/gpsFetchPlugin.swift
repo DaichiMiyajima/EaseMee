@@ -2,11 +2,12 @@ import UIKit
 import CoreLocation
 import Foundation
 
-@objc(gpsFetchPlugin) class gpsFetchPlugin :  CDVPlugin, CLLocationManagerDelegate {
+@objc(gpsFetchPlugin) class gpsFetchPlugin :  CDVPlugin, CLLocationManagerDelegate, UIApplicationDelegate {
     
     var myLocationManager: CLLocationManager!
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("didUpdateLocations START!")
         let lastLocation = locations.last
         if let last = lastLocation {
             let eventDate = last.timestamp
@@ -69,6 +70,20 @@ import Foundation
             task.resume()
         }
     }
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("ApplicationDidEnterBackground START!")
+        if CLLocationManager.significantLocationChangeMonitoringAvailable() {
+            myLocationManager.startMonitoringSignificantLocationChanges()
+        }
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        print("didFinishLaunchingWithOptions START!")
+        if launchOptions?[UIApplicationLaunchOptionsKey.location] != nil {
+            myLocationManager.startMonitoringSignificantLocationChanges()
+        }
+        return true
+    }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error")
@@ -93,6 +108,8 @@ import Foundation
         }
         
         myLocationManager = CLLocationManager()
+        // 常に位置情報を取得する権限
+        myLocationManager.requestAlwaysAuthorization()
         myLocationManager.delegate = self
         
         myLocationManager.requestAlwaysAuthorization()
@@ -107,11 +124,11 @@ import Foundation
         
         myLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         myLocationManager.distanceFilter = 1
-        myLocationManager.pausesLocationUpdatesAutomatically = true
+        myLocationManager.pausesLocationUpdatesAutomatically = false
         myLocationManager.allowsBackgroundLocationUpdates = true
         
         //star location
-        myLocationManager.startUpdatingLocation()
+        //myLocationManager.startUpdatingLocation()
         myLocationManager.startMonitoringSignificantLocationChanges()
         
         
