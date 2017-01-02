@@ -14,17 +14,19 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
             StatusBar.styleDefault();
         }
         openFB.init({appId: '880988045380765', tokenStore: window.localStorage, accessToken: window.localStorage.accessToken});
-        console.log("gpsFetchPlugin RUN!!!!!!!!!!???????????????");
-        window.gpsFetchPlugin.gpsFetch("", function() {
-        }
-        ,function() {
-        });
     });
 
     // When ng-route changing. Redirect if the user is loggedin or not
     $rootScope.$on('$stateChangeStart', function(ev, next, current){
         if(!authService.isLoggedIn()){
             $location.path('/landing');
+        }else{
+            //Background gps Service
+            window.gpsFetchPlugin.gpsFetch(
+                authData.uid,
+                function() {},
+                function() {}
+            );
         }
     });
 
@@ -33,6 +35,12 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
         if(authData){
             $location.path('/');
             authService.register(authData);
+            //Background gps Service
+            window.gpsFetchPlugin.gpsFetch(
+                authData.uid,
+                function() {},
+                function() {}
+            );
         }else{
             $location.path('/landing');
         }

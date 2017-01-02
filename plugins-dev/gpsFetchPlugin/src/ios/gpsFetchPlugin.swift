@@ -5,6 +5,7 @@ import Foundation
 @objc(gpsFetchPlugin) class gpsFetchPlugin :  CDVPlugin, CLLocationManagerDelegate, UIApplicationDelegate {
     
     var myLocationManager: CLLocationManager!
+    var userid: String!
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("didUpdateLocations START!")
@@ -23,51 +24,30 @@ import Foundation
                 print("Error: cannot create URL")
                 return
             }
+            let json = [
+                "latitude" : lastLocation?.coordinate.latitude ,
+                "longitude" : lastLocation?.coordinate.longitude ,
+                "userid": userid
+                ] as [String : Any]
+            
+            
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+            do {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: json , options:[])
+                // pass dictionary to nsdata object and set it as request body
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
             
             // set up the session
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
             
-            // make the request
-            let task = session.dataTask(with: urlRequest) {
-                (data, response, error) in
-                // check for any errors
-                guard error == nil else {
-                    print("error calling GET on /todos/1")
-                    print(error)
-                    return
-                }
-                // make sure we got data
-                guard let responseData = data else {
-                    print("Error: did not receive data")
-                    return
-                }
-                // parse the result as JSON, since that's what the API provides
-                do {
-                    guard let todo = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
-                        print("error trying to convert data to JSON")
-                        return
-                    }
-                    // now we have the todo, let's just print it to prove we can access it
-                    print("The todo is: " + todo.description)
-                    
-                    // the todo object is a dictionary
-                    // so we just access the title using the "title" key
-                    // so check for a title and print it if we have one
-                    guard let todoTitle = todo["title"] as? String else {
-                        print("Could not get todo title from JSON")
-                        return
-                    }
-                    print("The title is: " + todoTitle)
-                } catch  {
-                    print("error trying to convert data to JSON")
-                    return
-                }
-            }
-            
-            task.resume()
+            session.dataTask(with: urlRequest).resume()
         }
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -98,10 +78,11 @@ import Foundation
     }
     
     func gpsFetch(_ command: CDVInvokedUrlCommand) {
-        print("ボタンスタート")
+        print("gpsFetch Start!!!!!!!")
         let status = CLLocationManager.authorizationStatus()
-        print(status)
+        userid = command.arguments[0] as! String
         
+        print(userid)
         
         if status == CLAuthorizationStatus.restricted || status == CLAuthorizationStatus.denied {
             return
@@ -130,7 +111,6 @@ import Foundation
         //star location
         //myLocationManager.startUpdatingLocation()
         myLocationManager.startMonitoringSignificantLocationChanges()
-        
         
         //stop location update
         //myLocationManager.stopUpdatingLocation()

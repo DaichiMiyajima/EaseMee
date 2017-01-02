@@ -21,12 +21,6 @@ candyCtrl.controller('accountCtrl', function($scope, authService, $location,$sta
     };
 
     $scope.onClickBtnEcho = function() {
-        console.log("gpsFetchPlugin!!!!!!!!!!!!!!!!!");
-        window.gpsFetchPlugin.gpsFetch("", function() {
-        }
-        ,function() {
-        });
-        
         if (window.EchoPlugin) {
             window.EchoPlugin.echo($scope.msg.send, function(returnMsg) {
                 $scope.msg.return = returnMsg;
