@@ -8,32 +8,65 @@ import Foundation
     var userid: String!
     var gpsURL: String!
     
-    //
+    //start location service
     func gpsFetch(_ command: CDVInvokedUrlCommand) {
+        // returning back Result
+        var pluginResult = CDVPluginResult(
+            status: CDVCommandStatus_ERROR
+        )
+        
         let status = CLLocationManager.authorizationStatus()
         userid = command.arguments[0] as! String
         gpsURL = command.arguments[1] as! String
-        if status == CLAuthorizationStatus.restricted || status == CLAuthorizationStatus.denied {
-            return
-        }
         
         myLocationManager = CLLocationManager()
+        if status == CLAuthorizationStatus.notDetermined {
+            print("STATUS notDetermined")
+            pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "notDetermined")
+            self.commandDelegate!.send(
+                pluginResult,
+                callbackId: command.callbackId
+            )
+            //myLocationManager.requestAlwaysAuthorization()
+        }
+        if status == CLAuthorizationStatus.restricted {
+            print("STATUS restricted")
+            pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "restricted")
+            self.commandDelegate!.send(
+                pluginResult,
+                callbackId: command.callbackId
+            )
+        }
+        if status == CLAuthorizationStatus.denied {
+            print("STATUS denied")
+            pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "denied")
+            self.commandDelegate!.send(
+                pluginResult,
+                callbackId: command.callbackId
+            )
+            //UIApplication.shared.openURL(URL(string: "app-settings:")!)
+        }
+        if status == CLAuthorizationStatus.authorizedWhenInUse {
+            print("STATUS authorizedWhenInUse")
+            pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "authorizedWhenInUse")
+            self.commandDelegate!.send(
+                pluginResult,
+                callbackId: command.callbackId
+            )
+            //UIApplication.shared.openURL(URL(string: "app-settings:")!)
+        }
+        if status == CLAuthorizationStatus.authorizedAlways {
+            print("STATUS authorizedAlways")
+            pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "authorizedAlways")
+        }
+        
         // 常に位置情報を取得する権限
         myLocationManager.requestAlwaysAuthorization()
         myLocationManager.delegate = self
         
-        myLocationManager.requestAlwaysAuthorization()
-        
-        if status == CLAuthorizationStatus.notDetermined {
-            myLocationManager.requestAlwaysAuthorization()
-        }
-        
-        if !CLLocationManager.locationServicesEnabled() {
-            return
-        }
         
         myLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        myLocationManager.distanceFilter = 1
+        myLocationManager.distanceFilter = 100
         myLocationManager.pausesLocationUpdatesAutomatically = false
         myLocationManager.allowsBackgroundLocationUpdates = true
         
@@ -43,6 +76,16 @@ import Foundation
         
         //stop location update
         //myLocationManager.stopUpdatingLocation()
+        
+        self.commandDelegate!.send(
+            pluginResult,
+            callbackId: command.callbackId
+        )
+        
+    }
+    //open setting application
+    func openSetting(_ command: CDVInvokedUrlCommand) {
+        UIApplication.shared.openURL(URL(string: "app-settings:")!)
     }
     
     // MARK: CLLocationManagerDelegate

@@ -1,4 +1,4 @@
-candyService.factory('gpsService', function($q, $ionicPlatform, $cordovaGeolocation, configService, rootService, authService){
+candyService.factory('gpsService', function($q, $ionicPlatform, $cordovaGeolocation, configService, rootService, authService, $location){
 
     var getCurrentPosition = function(){
         var deferred = $q.defer();
@@ -26,15 +26,26 @@ candyService.factory('gpsService', function($q, $ionicPlatform, $cordovaGeolocat
             window.gpsFetchPlugin.gpsFetch(
                 authData.uid,
                 config.globalConfig.gpsURL,
-                function() {},
-                function() {}
+                function(msg) {},
+                function(msg) {
+                    $location.path('/location');
+                }
             )
         });
     };
 
+    var locationSetting = function(){
+        window.gpsFetchPlugin.openSetting(
+            "",
+            function() {},
+            function() {}
+        )
+    }
+
     var gpsService= {
         getCurrentPosition: getCurrentPosition,
-        gpsFetch: gpsFetch
+        gpsFetch: gpsFetch,
+        locationSetting: locationSetting
     };
 
     return gpsService;

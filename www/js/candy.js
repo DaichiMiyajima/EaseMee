@@ -64,6 +64,11 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
         templateUrl: 'templates/landing.html',
         controller: 'landingCtrl'
     })
+    .state('location', {
+        url: '/location',
+        templateUrl: 'templates/location.html',
+        controller: 'locationCtrl'
+    })
     .state('tab.account', {
         url: '/account',
         views: {
