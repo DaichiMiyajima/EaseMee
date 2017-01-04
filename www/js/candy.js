@@ -1,6 +1,6 @@
 var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', 'candy.services', 'candy.directives', 'ngCordova'])
 
-.run(function($ionicPlatform, authService,$rootScope, $location, configService) {
+.run(function($ionicPlatform, authService,$rootScope, $location, gpsService) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -21,15 +21,7 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
             $location.path('/landing');
         }else{
             //Background gps Service
-            configService(function(config){
-                console.log("URL:"+config.globalConfig.gpsURL);
-                window.gpsFetchPlugin.gpsFetch(
-                    authData.uid,
-                    config.globalConfig.gpsURL,
-                    function() {},
-                    function() {}
-                )
-            });
+            gpsService.gpsFetch(authData);
         }
     });
 
@@ -39,15 +31,7 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
             $location.path('/');
             authService.register(authData);
             //Background gps Service
-            configService(function(config){
-                console.log("URL:"+config.globalConfig.gpsURL);
-                window.gpsFetchPlugin.gpsFetch(
-                    authData.uid,
-                    config.globalConfig.gpsURL,
-                    function() {},
-                    function() {}
-                )
-            });
+            gpsService.gpsFetch(authData);
         }else{
             $location.path('/landing');
         }
@@ -55,13 +39,7 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
 })
 
 .config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
-
-    // Ionic uses AngularUI Router which uses the concept of states
-    // Learn more here: https://github.com/angular-ui/ui-router
-    // Set up the various states which the app can be in.
-    // Each state's controller can be found in controllers.js
     $stateProvider
-
     // setup an abstract state for the tabs directive
     .state('tab', {
         url: '/tab',

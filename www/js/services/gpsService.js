@@ -19,9 +19,22 @@ candyService.factory('gpsService', function($q, $ionicPlatform, $cordovaGeolocat
         return deferred.promise;
     };
 
+    //get Background Geolocation using gpsFetchPlugin
+    var gpsFetch = function(authData){
+        //Background gps Service
+        configService(function(config){
+            window.gpsFetchPlugin.gpsFetch(
+                authData.uid,
+                config.globalConfig.gpsURL,
+                function() {},
+                function() {}
+            )
+        });
+    };
+
     var gpsService= {
-        watchID: "init",
-        getCurrentPosition: getCurrentPosition
+        getCurrentPosition: getCurrentPosition,
+        gpsFetch: gpsFetch
     };
 
     return gpsService;

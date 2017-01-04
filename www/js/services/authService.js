@@ -16,7 +16,7 @@ candyService.factory('authService', function(rootService, $ionicPlatform, $fireb
     return authService;
 
     function register(authData) {
-        rootService.users.child(authData.uid).set({
+        rootService.users.child(authData.uid).update({
             provider: authData.email,
             name: authData.displayName,
             profileimage:authData.photoURL
