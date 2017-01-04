@@ -1,7 +1,6 @@
 var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', 'candy.services', 'candy.directives', 'ngCordova'])
 
-.run(function($ionicPlatform, authService,$rootScope, $location) {
-    console.log("RUN THROUGH");
+.run(function($ionicPlatform, authService,$rootScope, $location, configService) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -22,11 +21,15 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
             $location.path('/landing');
         }else{
             //Background gps Service
-            window.gpsFetchPlugin.gpsFetch(
-                authData.uid,
-                function() {},
-                function() {}
-            );
+            configService(function(config){
+                console.log("URL:"+config.globalConfig.gpsURL);
+                window.gpsFetchPlugin.gpsFetch(
+                    authData.uid,
+                    config.globalConfig.gpsURL,
+                    function() {},
+                    function() {}
+                )
+            });
         }
     });
 
@@ -36,11 +39,15 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
             $location.path('/');
             authService.register(authData);
             //Background gps Service
-            window.gpsFetchPlugin.gpsFetch(
-                authData.uid,
-                function() {},
-                function() {}
-            );
+            configService(function(config){
+                console.log("URL:"+config.globalConfig.gpsURL);
+                window.gpsFetchPlugin.gpsFetch(
+                    authData.uid,
+                    config.globalConfig.gpsURL,
+                    function() {},
+                    function() {}
+                )
+            });
         }else{
             $location.path('/landing');
         }
