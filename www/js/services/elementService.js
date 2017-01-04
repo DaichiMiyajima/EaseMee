@@ -29,7 +29,7 @@ candyService.factory('elementService', function(mapService, configService, authS
                     });
                     element.markers[key].addEventListener(plugin.google.maps.event.MARKER_CLICK, function() {
                         mapService.map.setClickable( false );
-                        $state.go('userinfo');
+                        $state.go('userinfo', { userid: key});
                     });
                 });
                 //For creating arrow marker

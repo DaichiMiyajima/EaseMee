@@ -1,4 +1,4 @@
-candyCtrl.controller('userinfoCtrl', function($scope, $location, $state, mapService) {
+candyCtrl.controller('userinfoCtrl', function($scope, $location, $state, mapService, $stateParams, userService) {
     $scope.goback = goback;
     $scope.goreview = goreview;
     $scope.gochatdetail = gochatdetail;
@@ -8,10 +8,17 @@ candyCtrl.controller('userinfoCtrl', function($scope, $location, $state, mapServ
     $scope.userinfo_tab_photos_show = true;
     $scope.userinfo_tab_lists_show = false;
     $scope.userinfo_tab_accounts_show = false;
-
     $scope.photo_click = photo_click;
     $scope.list_click = list_click;
     $scope.account_click = account_click;
+    console.log("$stateParams.userid");
+    console.log($stateParams.userid);
+    //get user info
+    userService.userObject($stateParams.userid).$loaded().then(function(userObject){
+        $scope.username = userObject.name;
+        $scope.profileimage = userObject.profileimage;
+        $scope.positiontime = userObject.positiontime;
+    });
 
     function goback($event){
         mapService.map.setClickable( true );

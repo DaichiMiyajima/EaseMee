@@ -69,14 +69,13 @@ import Foundation
                 "userid": userid
                 ] as [String : Any]
             
-            
+            //post location update to API Server
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "POST"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
             do {
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: json , options:[])
-                // pass dictionary to nsdata object and set it as request body
                 
             } catch let error {
                 print(error.localizedDescription)

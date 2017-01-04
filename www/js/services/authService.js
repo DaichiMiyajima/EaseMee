@@ -10,7 +10,8 @@ candyService.factory('authService', function(rootService, $ionicPlatform, $fireb
       login: login,
       logout: logout,
       isLoggedIn: isLoggedIn,
-      onAuth: onAuth
+      onAuth: onAuth,
+      authData:""
     };
 
     return authService;

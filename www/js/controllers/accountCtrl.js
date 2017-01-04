@@ -2,6 +2,9 @@ candyCtrl.controller('accountCtrl', function($scope, authService, $location,$sta
     $scope.logout = logout;
     $scope.review = review;
     $scope.chatDetail = chatDetail;
+
+    $scope.photoURL = authService.authData.photoURL;
+    $scope.displayName = authService.authData.displayName;
     
     function logout(){
         authService.logout();

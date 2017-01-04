@@ -22,6 +22,7 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
         }else{
             //Background gps Service
             gpsService.gpsFetch(authData);
+            authService.authData = authData;
         }
     });
 
@@ -32,6 +33,7 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
             authService.register(authData);
             //Background gps Service
             gpsService.gpsFetch(authData);
+            authService.authData = authData;
         }else{
             $location.path('/landing');
         }
@@ -74,7 +76,8 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
     .state('userinfo', {
         url: '/userinfo',
         templateUrl: 'templates/userinfo.html',
-        controller: 'userinfoCtrl'
+        controller: 'userinfoCtrl',
+        params: {'userid' : null}
     });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/mainMap');

@@ -45,15 +45,13 @@ Easily you can meet up with friends.
     
     cordova plugin add cordova-plugin-touch-id
     
+    ionic plugin add plugins-dev/gpsFetchPlugin
+    
     ionic resources --icon
     
     ionic platform remove ios
     
     ionic platform add ios
-    
-    ionic plugin add plugins-dev/gpsFetchPlugin
-    
-    ionic plugin add plugins-dev/EchoPlugin
 
 
 #### ②Change settings of XCODE
