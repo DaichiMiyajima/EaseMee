@@ -81,9 +81,6 @@ import Foundation
         print("gpsFetch Start!!!!!!!")
         let status = CLLocationManager.authorizationStatus()
         userid = command.arguments[0] as! String
-        
-        print(userid)
-        
         if status == CLAuthorizationStatus.restricted || status == CLAuthorizationStatus.denied {
             return
         }
