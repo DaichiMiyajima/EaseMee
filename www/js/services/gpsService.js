@@ -20,26 +20,20 @@ candyService.factory('gpsService', function($q, $ionicPlatform, $cordovaGeolocat
     };
 
     //get Background Geolocation using gpsFetchPlugin
-    var gpsFetch = function(authData){
+    var gpsFetch = function(authData, success, error){
         //Background gps Service
         configService(function(config){
             window.gpsFetchPlugin.gpsFetch(
                 authData.uid,
                 config.globalConfig.gpsURL,
-                function(msg) {},
-                function(msg) {
-                    $location.path('/location');
-                }
+                success,
+                error
             )
         });
     };
 
     var locationSetting = function(){
-        window.gpsFetchPlugin.openSetting(
-            "",
-            function() {},
-            function() {}
-        )
+        window.gpsFetchPlugin.openSetting("");
     }
 
     var gpsService= {

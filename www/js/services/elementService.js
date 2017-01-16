@@ -7,6 +7,8 @@ candyService.factory('elementService', function(mapService, configService, authS
                 mapService.map.addMarker({
                     'position': new plugin.google.maps.LatLng(location[0], location[1]),
                     'zIndex': 100,
+                    // must use optimized false for CSS  to the marker specification. This allows you to render each marker as a separate DOM element
+                    'optimized': false,
                     'icon': {
                          'url': canvasimage,
                          'size': {

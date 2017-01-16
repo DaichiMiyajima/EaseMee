@@ -71,7 +71,9 @@ import Foundation
         myLocationManager.allowsBackgroundLocationUpdates = true
         
         //star location
-        //myLocationManager.startUpdatingLocation()
+        myLocationManager.startUpdatingLocation()
+        
+        //star startMonitoringSignificantLocationChanges
         myLocationManager.startMonitoringSignificantLocationChanges()
         
         //stop location update
@@ -135,6 +137,7 @@ import Foundation
     //バックグラウンドに入る時に呼ばれる
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("ApplicationDidEnterBackground START!")
+        myLocationManager.startUpdatingLocation()
         if CLLocationManager.significantLocationChangeMonitoringAvailable() {
             myLocationManager.startMonitoringSignificantLocationChanges()
         }
@@ -143,6 +146,7 @@ import Foundation
     //位置情報更新時にアプリのプロセスが停止している場合もここから起動
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if launchOptions?[UIApplicationLaunchOptionsKey.location] != nil {
+            myLocationManager.startUpdatingLocation()
             myLocationManager.startMonitoringSignificantLocationChanges()
         }
         return true

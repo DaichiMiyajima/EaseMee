@@ -1,6 +1,6 @@
 var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', 'candy.services', 'candy.directives', 'ngCordova'])
 
-.run(function($ionicPlatform, authService,$rootScope, $location, gpsService) {
+.run(function($ionicPlatform, authService,$rootScope, $location, gpsService, userService, orientationService) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -15,13 +15,35 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
         openFB.init({appId: '880988045380765', tokenStore: window.localStorage, accessToken: window.localStorage.accessToken});
     });
 
+    //Background to foreground event
+    $ionicPlatform.on("resume", function() {
+        //update online or not and time
+        userService.updateUser_online(authService.authData.uid, "online");
+        gpsService.gpsFetch(authService.authData,
+            function(msg) {
+                $location.path('/');
+            },
+            function(msg) {
+                $location.path('/location');
+            }
+        );
+    });
+
+    //foreground to background event
+    $ionicPlatform.on("pause", function() {
+        //Clear watch orientation
+        if(orientationService.watchid){
+            navigator.compass.clearWatch(orientationService.watchid);
+        }
+        //update online or not and time
+        userService.updateUser_online(authService.authData.uid, "offline");
+    });
+
     // When ng-route changing. Redirect if the user is loggedin or not
     $rootScope.$on('$stateChangeStart', function(ev, next, current){
         if(!authService.isLoggedIn()){
             $location.path('/landing');
         }else{
-            //Background gps Service
-            gpsService.gpsFetch(authData);
             authService.authData = authData;
         }
     });
@@ -31,9 +53,16 @@ var candy = angular.module('candy', ['ionic', 'firebase', 'candy.controllers', '
         if(authData){
             $location.path('/');
             authService.register(authData);
-            //Background gps Service
-            gpsService.gpsFetch(authData);
             authService.authData = authData;
+            //Background gps Service
+            gpsService.gpsFetch(authService.authData,
+                function(msg) {
+                    $location.path('/');
+                },
+                function(msg) {
+                    $location.path('/location');
+                }
+            );
         }else{
             $location.path('/landing');
         }
